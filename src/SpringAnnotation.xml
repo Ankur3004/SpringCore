@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" This is for dependency injection practice only
+"http://www.springframework.org/dtd/spring-beans.dtd"> -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<context:component-scan base-package="base.package.to.scan" />
+	<bean id="triangle" class="com.ankur.SpringAnnotation.TriangleAnnotationSpring">
+		<property name="pointAnnotationA" ref="pointAnnotationA"/>
+		<property name="pointAnnotationB" ref="pointAnnotationB"/>
+		<property name="pointAnnotationC" ref="pointAnnotationC"/>
+	</bean> 
+	
+	<bean id="pointAnnotationA" class = "com.ankur.SpringAnnotation.PointForAnnotation"><!-- Object injection -->
+		<qualifier value="circleRelated"/>
+		<property name="x" value="0"/>
+		<property name="y" value="0"/>
+	</bean>
+	
+	<bean id="pointAnnotationB" class = "com.ankur.SpringAnnotation.PointForAnnotation"><!-- Object injection -->
+		<property name="x" value="-20"/>
+		<property name="y" value="0"/>
+	</bean>
+	
+	<bean id="pointAnnotationC" class = "com.ankur.SpringAnnotation.PointForAnnotation"><!-- Object injection -->
+		<property name="x" value="20"/>
+		<property name="y" value="0"/>
+	</bean>
+	
+	<!-- <bean id="pointAnnotationC" class = "com.ankur.SpringAnnotation.PointForAnnotation">Object injection
+		<property name="x" value="20"/>
+		<property name="y" value="0"/>
+	</bean> -->  
+	<context:component-scan base-package="com.ankur.SpringAnnotation"></context:component-scan>
+	<!-- <bean id="circle" class="com.ankur.SpringAnnotation.CircleForAnnotation">
+		
+	</bean> -->
+	<!-- This bean definition and changes is for RequiredAnnotationBeanPostProcessor
+	<bean id="circle" class="com.ankur.SpringAnnotation.CircleForAnnotation">
+		<property name="center" ref="pointAnnotationA"/>
+	</bean>
+	<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/> -->
+	<!-- <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/> -->
+	<!-- <context:anotation-config/> -->
+</beans>

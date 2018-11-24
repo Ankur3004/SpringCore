@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+"http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<bean id="triangle" class="com.ankur.callingByInterface.TriangleInterfaceSpring">
+		<property name="pointInterfaceA" ref="pointInterfaceA"/>
+		<property name="pointInterfaceB" ref="pointInterfaceB"/>
+		<property name="pointInterfaceC" ref="pointInterfaceC"/>
+	</bean>
+	
+	<bean id="pointInterfaceA" class = "com.ankur.callingByInterface.PointForInterface"><!-- Object injection -->
+		<property name="x" value="0"/>
+		<property name="y" value="0"/>
+	</bean>
+	
+	<bean id="pointInterfaceB" class = "com.ankur.callingByInterface.PointForInterface"><!-- Object injection -->
+		<property name="x" value="-20"/>
+		<property name="y" value="0"/>
+	</bean>
+	
+	<bean id="pointInterfaceC" class = "com.ankur.callingByInterface.PointForInterface"><!-- Object injection -->
+		<property name="x" value="20"/>
+		<property name="y" value="0"/>
+	</bean>
+	
+	<bean id="circle" class="com.ankur.callingByInterface.Circle">
+		<property name="center" ref="pointInterfaceA"/>
+	</bean>
+</beans>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+"http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+<bean id="mainTriangle" class="com.ankur.practice.TriangleObjectInjection"><!-- Object injection -->
+	<property name="pointA" ref="zeroPoint"/><!-- We can use idref for validation -->
+	<property name="pointB"><!-- Example of inner Bean -->
+		<bean class = "com.ankur.practice.Point"><!-- Object injection -->
+				<property name="x" value="-20"/>
+				<property name="y" value="0"/>
+		</bean>
+	</property>
+	<property name="pointC"><!-- Example of inner Bean -->
+		<bean class = "com.ankur.practice.Point"><!-- Object injection -->
+				<property name="x" value="20"/>
+				<property name="y" value="0"/>
+		</bean>
+	</property>
+</bean>
+<bean id="zeroPoint" class = "com.ankur.practice.Point"><!-- Object injection -->
+	<property name="x" value="0"/>
+	<property name="y" value="0"/>
+</bean>
+<alias name ="mainTriangle" alias="triangle-alias"/><!-- for aliasing the bean -->
+<!--  <bean id="point2" class = "com.ankur.practice.Point">--><!-- Object injection -->
+	<!--<property name="x" value="-20"/>-->
+	<!--  property name="y" value="0"/>-->
+<!--</bean>-->
+<!--<bean id="point3" class = "com.ankur.practice.Point">--><!-- Object injection -->
+	<!--<property name="x" value="20"/>-->
+	<!--<property name="y" value="0"/>-->
+<!--</bean>-->
+
+</beans>
